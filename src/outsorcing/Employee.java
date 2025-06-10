@@ -14,8 +14,6 @@ public class Employee extends Person {
     public Employee(String name, String phone, String birthdate, Gender gender, int age, Part part) {
         super(name, phone, birthdate, gender, age);
         this.part = part;
-
-        employList.add(this);
     }
 
     public Part getPart() {
