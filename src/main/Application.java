@@ -90,42 +90,8 @@ public class Application {
         } catch(IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
-        hm.addNurse(n1);
-        hm.addNurse(n2);
-        hm.addNurse(n3);
-        hm.addNurse(n4);
-        hm.addNurse(n5);
-        hm.addNurse(n6);
-        hm.addNurse(n7);
-        hm.removeNurse(n2);
-        Nurse nurse=new Nurse("", ", ", ",",Gender.female, 44,DeptName.DER);
-        hm.setNurse(4, nurse);
-        hm.setNurse(n7, nurse);
-        hm.addNurse(n8);
-        hm.addNurse(n9);
-        hm.addNurse(n10);
-        hm.addNurse(n11);
-        hm.addNurse(n12);
-        hm.addNurse(n13);
-        hm.addNurse(n14);
-        hm.addNurse(n15);
-        ObjectInputStream nois=null;
-        try {
-            nois = new ObjectInputStream(new FileInputStream("nurses.txt"));
-            while (true) {
-                System.out.println(nois.readObject().toString());
-            }
-        } catch(EOFException e) {
-            System.out.println("더 이상 객체가 없습니다.");
-        } catch(IOException | ClassNotFoundException e){
-            System.out.println(e);
-        } finally {
-            try {
-                if(nois!=null) nois.close();
-            } catch(IOException e ){
-                System.out.println(e);
-            }
-        }
+
+
 
     }
 }
