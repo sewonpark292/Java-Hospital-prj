@@ -31,10 +31,28 @@ public class Patient extends Person {
     public Nurse getAssignedNurse() {
         return assignedNurse;
     }
+    public DeptName getDept() {
+        return this.dept;
+    }
     public String patientInfo(){
         return "Patient ID : "+patientID+", Name : "+getName()
                 +", Dept Name : "+dept
                 +", Assigned Doctor : "+assignedDoctor.getName()
                 +", Assigned Nurse : "+assignedNurse.getName()+"\n";
+    }
+
+    @Override
+    public String toString() { //println(doctor)시에 toString()이 오버라이딩 되어 있어야 함
+        return "Patient{" +
+                "patientID=" + getPatientID() +
+                ", name='" + getName() + '\'' +
+                ", phone='" + getPhone() + '\'' +
+                ", birthdate='" + getBirthdate() + '\'' +
+                ", gender=" + getGender() +
+                ", age=" + getAge() +
+                ", dept=" + getDept() +
+                ", assignDoctor=" + getAssignedDoctor() +
+                ", assignNurse=" + getAssignedNurse() +
+                '}';
     }
 }
