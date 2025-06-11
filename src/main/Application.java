@@ -54,7 +54,6 @@ public class Application {
         Nurse n14 = new Nurse("Nurse N", "010-8888-2222", "920202", Gender.female, 29, DeptName.DER);
         Nurse n15 = new Nurse("Nurse O", "010-8888-3333", "930303", Gender.female, 28, DeptName.DER);
         Nurse n16 = new Nurse("Nurse P", "010-8888-4444", "940404", Gender.female, 27, DeptName.DER);
-
         hm.addDoctor(d1);
         hm.addDoctor(d2);
         hm.addDoctor(d3);
@@ -71,14 +70,32 @@ public class Application {
         hm.addDoctor(d14);
         hm.addDoctor(d15);
         hm.addDoctor(d16);
+        hm.addNurse(n1);
+        hm.addNurse(n2);
+        hm.addNurse(n3);
+        hm.addNurse(n4);
+        hm.addNurse(n5);
+        hm.addNurse(n6);
+        hm.addNurse(n7);
+        hm.addNurse(n8);
+        hm.addNurse(n9);
+        hm.addNurse(n10);
+        hm.addNurse(n11);
+        hm.addNurse(n12);
+        hm.addNurse(n13);
+        hm.addNurse(n14);
+        hm.addNurse(n15);
+        Patient p1 = new Patient("Kim", "010-1111-0001", "2000-01-01", Gender.male, 25, DeptName.OB);
+        Patient p2 = new Patient("Lee", "010-1111-0002", "2000-02-02", Gender.female, 24, DeptName.OS);
+        Patient p3 = new Patient("Park", "010-1111-0003", "2000-03-03", Gender.male, 23, DeptName.DER);
+        Patient p4 = new Patient("Choi", "010-1111-0004", "2000-04-04", Gender.female, 22, DeptName.PS);
+        Patient p5 = new Patient("Jeong", "010-1111-0005", "2000-05-05", Gender.male, 21, DeptName.PS);
+        Patient p6 = new Patient("Han", "010-1111-0006", "2000-06-06", Gender.female, 26, DeptName.DER);
+        Patient p7 = new Patient("Yoon", "010-1111-0007", "2000-07-07", Gender.male, 27, DeptName.OS);
+        Patient p8 = new Patient("Jang", "010-1111-0008", "2000-08-08", Gender.female, 28, DeptName.OB);
+        Patient p9 = new Patient("Kang", "010-1111-0009", "2000-09-09", Gender.male, 29, DeptName.DER);
+        Patient p10 = new Patient("Lim", "010-1111-0010", "2000-10-10", Gender.female, 30, DeptName.OB);
 
-        hm.removeDoctor(d9);
-        hm.removeDoctor(d10);
-
-        hm.setDoctor(10, new Doctor("박세원", "010010010", "010731", Gender.male, 25, DeptName.DER));
-
-        Doctor newD = new Doctor("주지훈", "01044444444", "771111", Gender.female, 50, DeptName.PS);
-        hm.setDoctor(d15, newD);
 
         try {
             ObjectInputStream ois= new ObjectInputStream(new FileInputStream("doctors.txt"));
@@ -86,12 +103,59 @@ public class Application {
                System.out.println(ois.readObject().toString());
             }
         } catch(EOFException e){
-            System.out.println("더 이상 객체가 없습니다. ");
+            System.out.println("===================================");
         } catch(IOException | ClassNotFoundException e) {
             System.out.println(e);
         }
 
 
+        hm.addPatient(p1);
+        hm.addPatient(p2);
+        hm.addPatient(p3);
+        hm.addPatient(p4);
 
+        try {
+            ObjectInputStream ois2= new ObjectInputStream(new FileInputStream("patients.txt"));
+            while(true) {
+                System.out.println(ois2.readObject().toString());
+            }
+        } catch(EOFException e){
+            System.out.println("===================================");
+        } catch(IOException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        Record r1_1 = new Diagnosis(p1, d1, "고혈압", "2025-06-01", "혈압이 높음");
+        Record r1_2 = new Prescription(p2, "2025-06-01", d1, "10mg", "1일 1회", "혈압약");
+        Record r1_3 = new Treatment(p1, "2025-06-01", "정기 혈압 측정", n1, "혈압 측정");
+        Record r1_4 = new Diagnosis(p2, d1, "부정맥", "2025-06-02", "심장 박동 불규칙");
+        Record r1_5 = new Prescription(p1, "2025-06-02", d1, "5mg", "1일 2회", "부정맥약");
+        Record r1_6 = new Treatment(p2, "2025-06-02", "심전도 검사", n1, "ECG 검사");
+        Record r1_7 = new Diagnosis(p1, d1, "고지혈증", "2025-06-03", "콜레스테롤 높음");
+        Record r1_8 = new Prescription(p2, "2025-06-03", d1, "20mg", "1일 1회", "콜레스테롤약");
+        Record r1_9 = new Treatment(p1, "2025-06-03", "채혈", n1, "혈액 검사");
+        Record r1_10 = new Treatment(p2, "2025-06-04", "식이상담", n1, "영양 상담");
+
+        RecordsManagement rm=new RecordsManagement();
+        rm.putRecord(p1.getPatientID(), r1_1);
+        rm.putRecord(p2.getPatientID(), r1_2);
+        rm.putRecord(p1.getPatientID(), r1_3);
+        rm.putRecord(p2.getPatientID(), r1_4);
+        rm.putRecord(p1.getPatientID(), r1_5);
+        rm.putRecord(p2.getPatientID(), r1_6);
+        rm.putRecord(p1.getPatientID(), r1_7);
+        rm.putRecord(p2.getPatientID(), r1_8);
+        rm.putRecord(p1.getPatientID(), r1_9);
+        rm.putRecord(p2.getPatientID(), r1_10);
+
+        try {
+            ObjectInputStream ois3= new ObjectInputStream(new FileInputStream("records.txt"));
+            while(true) {
+                System.out.println(ois3.readObject().toString());
+            }
+        } catch(EOFException e){
+            System.out.println("===================================");
+        } catch(IOException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
     }
 }
