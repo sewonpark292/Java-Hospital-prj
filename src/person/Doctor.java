@@ -45,9 +45,9 @@ public class Doctor extends Person implements Serializable {
     public String toString() { //println(doctor)시에 toString()이 오버라이딩 되어 있어야 함
         return "Doctor{" +
                 "doctorID=" + getDoctorID() +
-                ", name='" + getName() + '\'' +
-                ", phone='" + getPhone() + '\'' +
-                ", birthdate='" + getBirthdate() + '\'' +
+                ", name='" + getName() +
+                ", phone='" + getPhone() +
+                ", birthdate='" + getBirthdate() +
                 ", gender=" + getGender() +
                 ", age=" + getAge() +
                 ", dept=" + getDept() +

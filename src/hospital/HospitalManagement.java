@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-public class HospitalManagement extends Hospital implements Serializable {
+public class HospitalManagement extends Hospital {
     public void allDoctorInfo() {
         for (Doctor d : Doctor.getDoctorList()) {
             d.getInfo();
