@@ -3,7 +3,9 @@ package record;
 import person.Doctor;
 import person.Patient;
 
-public class Prescription extends Record{
+import java.io.Serializable;
+
+public class Prescription extends Record implements Serializable {
 
     private String medicationName; //약 이름
     private String dosage; //용량
@@ -21,6 +23,10 @@ public class Prescription extends Record{
     }
 
     public void getInfo(){
-        System.out.println("[Prescription] : " + medicationName + ", " + dosage + ", " + frequency + ", 처방일: " + date + ", 의사: " +doctor.getName());
+        System.out.println("[Prescription] : " + medicationName + ", " + dosage + ", " + frequency + ", Date: " + date + ", Doctor : " +doctor.getName());
+    }
+    @Override
+    public String toString() {
+        return "P.Name : " + p.getName() + " [Prescription : "+ medicationName + ", " + dosage + ", " + frequency + ", Date : " + date + ", Doctor : " +doctor.getName() + "]";
     }
 }

@@ -3,7 +3,9 @@ package record;
 import person.Nurse;
 import person.Patient;
 
-public class Treatment extends Record{
+import java.io.Serializable;
+
+public class Treatment extends Record implements Serializable {
     private String treatments;
     private String date;
     private Nurse nurse;
@@ -18,6 +20,10 @@ public class Treatment extends Record{
     }
 
     public void getInfo(){
-        System.out.println("[Treatment] : " + treatments + ", 날짜: " + date + ", 메모: " + notes + ", 간호사: " + nurse.getName());
+        System.out.println("[Treatment] : " + treatments + ", Date : " + date + ", memo : " + notes + ", Nurse : " + nurse.getName());
+    }
+    @Override
+    public String toString() {
+        return "P.Name : " + p.getName() +  " [Treatment : "+ treatments + ", Date : " + date + ", memo : " + notes + ", Nurse : " + nurse.getName() + "]";
     }
 }

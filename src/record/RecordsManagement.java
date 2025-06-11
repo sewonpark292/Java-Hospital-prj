@@ -1,29 +1,38 @@
 package record;
 
-import jdk.jshell.Diag;
 import person.Patient;
 
-import javax.xml.crypto.dsig.DigestMethod;
-import java.net.Inet4Address;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 
 public class RecordsManagement {
 
     private Map<Integer, List<Record>> patientRec = new HashMap<>();
 
+    public void savePatientRecordToFile(Integer key) {
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("records.txt"));
+            for(List<Record> rlist : patientRec.values()) {
+                for(Record r : rlist) {
+                    oos.writeObject(r);
+                }
+            }
+        } catch(IOException e){
+            System.out.println(e);
+        }
+    }
     public void putRecord(Integer key, Record rec) {
         if (patientRec.get(key) == null) {
             patientRec.put(key, new ArrayList<>());
         }
         patientRec.get(key).add(rec);
+        savePatientRecordToFile(key);
     }
     public void setRecordByIdx(Integer key, int idx, Record rec){
         List<Record> records = patientRec.get(key);
         if(idx<records.size()){
             records.set(idx,rec);
+            savePatientRecordToFile(key);
         }
     }
     public void removeAllRecord(Integer key){
@@ -33,6 +42,7 @@ public class RecordsManagement {
         List<Record> rec=patientRec.get(key);
         if(idx<rec.size()){
             rec.remove(idx);
+            savePatientRecordToFile(key);
         }
     }
     public void recordInfo(int key){

@@ -3,7 +3,9 @@ package record;
 import person.Doctor;
 import person.Patient;
 
-public class Diagnosis extends Record{
+import java.io.Serializable;
+
+public class Diagnosis extends Record implements Serializable {
 
     private Doctor doctor=p.getAssignedDoctor();
     private String diagnosisName;
@@ -20,5 +22,9 @@ public class Diagnosis extends Record{
 
     public void getInfo(){
         System.out.println("[Diagnosis] : "+diagnosisName+", Date : "+date+", memo : "+notes + ", 의사 : " + doctor.getName());
+    }
+    @Override
+    public String toString() {
+        return "P.Name : " + p.getName() + " [Diagnosis : "+diagnosisName+", Date : "+date+", memo : "+notes + ", Doctor : " + doctor.getName() + "]";
     }
 }
