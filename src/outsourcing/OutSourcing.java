@@ -51,12 +51,15 @@ public class OutSourcing extends Hospital {
     }
     public void addEmployee(Employee e){
         Employee.getEmployList().add(e);
+        saveEmployeeListToFile();
     }
     public void removeEmployee(Employee e){
         Employee.getEmployList().remove(e);
+        saveEmployeeListToFile();
     }
     public void setEmployee(int index, Employee e){
         Employee.getEmployList().set(index, e);
+        saveEmployeeListToFile();
     }
     public void setEmployee(Employee del, Employee employee) {
         int key = del.getEmployeeID();
