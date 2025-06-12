@@ -13,7 +13,7 @@
 | design | CSS 등 사용자 UI 디자인 변경 |
 | comment | 필요한 주석 추가 및 변경 |
 | docs | 문서 수정 |
-| refactor | 코드 리팩토링 |
+| refactor | 코드 리팩토링(코드 구조 개선) |
 | chore | 패키지 매니저 수정, 그 외 기타 수정 ex) .gitignore |
 | test | 테스트 코드, 리팩토링 테스트 코드 추가 |
 | rename | 파일 또는 폴더 명을 수정하거나 옮기는 작업만인 경우 |

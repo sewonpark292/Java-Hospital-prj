@@ -1,4 +1,4 @@
-package outsorcing;
+package outsourcing;
 import hospital.Hospital;
 
 import java.io.FileOutputStream;
@@ -6,12 +6,13 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.*;
 
-public class OutSorcing extends Hospital {
+public class OutSourcing extends Hospital {
     private String partnerCompany;
     private String companyName;
     private String location;
 
-    public OutSorcing(String partnerCompany, String companyName, String location){
+    public OutSourcing() {}
+    public OutSourcing(String partnerCompany, String companyName, String location){
         this.partnerCompany=partnerCompany;
         this.companyName=companyName;
         this.location=location;
@@ -68,5 +69,14 @@ public class OutSorcing extends Hospital {
             }
             idx++;
         }
+    }
+    public Employee findEmployeeById(int key) {
+        List<Employee> elist = Employee.getEmployList();
+        for(Employee e : elist) {
+            if(key == e.getEmployeeID()) {
+                return e;
+            }
+        }
+        return null;
     }
 }

@@ -3,7 +3,6 @@ import enums.DeptName;
 import enums.Gender;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Nurse extends Person implements Serializable {

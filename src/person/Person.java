@@ -1,6 +1,7 @@
 package person;
-import hospital.Hospital;
+
 import enums.Gender;
+import hospital.Hospital;
 
 import java.io.Serializable;
 
@@ -36,5 +37,25 @@ public abstract class Person implements Serializable {
     }
     public String getName() {
         return name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public void setGender(String gender) {
+        this.gender = Gender.valueOf(gender);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

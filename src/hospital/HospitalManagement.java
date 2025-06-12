@@ -1,15 +1,13 @@
 package hospital;
 
-import java.io.*;
 import person.Doctor;
 import person.Nurse;
 import person.Patient;
 
-import javax.print.Doc;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.*;
+import java.util.List;
 
 public class HospitalManagement extends Hospital {
     public void allDoctorInfo() {
@@ -114,7 +112,7 @@ public class HospitalManagement extends Hospital {
     public void allPatientInfo(){
         for(Patient p : Patient.getPatientList()){
             p.getInfo();
-            System.out.println(p.patientInfo());
+            System.out.print(p.patientInfo());
         }
     }
     public void savePatientListToFile() {
@@ -152,5 +150,14 @@ public class HospitalManagement extends Hospital {
             }
             idx++;
         }
+    }
+    public Patient findPatientById(int id) {
+        List<Patient> plist = Patient.getPatientList();
+        for(Patient p : plist) {
+            if(id == p.getPatientID()) {
+                return p;
+            }
+        }
+        return null;
     }
 }

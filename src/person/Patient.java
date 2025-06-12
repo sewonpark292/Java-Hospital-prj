@@ -6,6 +6,7 @@ import enums.Gender;
 import java.util.ArrayList;
 
 public class Patient extends Person {
+
     private static int patientIDCounter=3000;
     private int patientID=3000;
     private DeptName dept;
@@ -35,8 +36,8 @@ public class Patient extends Person {
         return this.dept;
     }
     public String patientInfo(){
-        return "Patient ID : "+patientID+", Name : "+getName()
-                +", Dept Name : "+dept
+        return ", Patient ID : "+patientID
+                +", Dept : "+dept
                 +", Assigned Doctor : "+assignedDoctor.getName()
                 +", Assigned Nurse : "+assignedNurse.getName()+"\n";
     }

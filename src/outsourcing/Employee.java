@@ -1,4 +1,4 @@
-package outsorcing;
+package outsourcing;
 
 import enums.Gender;
 import enums.Part;
@@ -14,6 +14,7 @@ public class Employee extends Person {
     public Employee(String name, String phone, String birthdate, Gender gender, int age, Part part) {
         super(name, phone, birthdate, gender, age);
         this.part = part;
+        this.employeeID = employeeIDCounter++;
     }
 
     public Part getPart() {
@@ -22,6 +23,9 @@ public class Employee extends Person {
     public int getEmployeeID() {
         return employeeID;
     }
+    public void setPart(String part) {
+        this.part = Part.valueOf(part);
+    }
 
     public static ArrayList<Employee> getEmployList() {
         return employList;
@@ -29,7 +33,7 @@ public class Employee extends Person {
 
     public void employInfo() {
         getInfo();
-        System.out.println(", Part : " + part);
+        System.out.println(", employeeID : " + employeeID + ", Part : " + part);
     }
 
     @Override

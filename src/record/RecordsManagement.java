@@ -1,14 +1,20 @@
 package record;
 
-import person.Patient;
-
-import java.io.*;
-import java.util.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RecordsManagement {
 
     private Map<Integer, List<Record>> patientRec = new HashMap<>();
 
+    public Map<Integer, List<Record>> getMap() {
+        return this.patientRec;
+    }
     public void savePatientRecordToFile(Integer key) {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("records.txt"));
@@ -46,9 +52,12 @@ public class RecordsManagement {
         }
     }
     public void recordInfo(int key){
+        int i=0;
         List<Record> records = patientRec.get(key); //get하면 value가 나옴
         for (Record record : records) { //diagnosis, prescription, treatment 출력
+            System.out.print("["+i+"]");
             record.getInfo();
+            i++;
         }
     }
 }
